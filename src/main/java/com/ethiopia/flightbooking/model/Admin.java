@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Data
@@ -20,18 +21,21 @@ public class Admin
     @Column(name = "id")
     private Integer id;
 
-    @NotEmpty
+    @NotEmpty(message = "please provide email")
+    @Email(message = "please provide a valid email")
     @Column(name = "firstname")
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message = "please provide a valid last name")
     @Column(name = "lastname")
     private String lastName;
 
     @Column(name = "username")
+    @NotEmpty(message = "please provide a valid last name")
     private String userName;
 
     @Column(name = "password")
+    @NotEmpty(message = "*Please provide your password")
     private String passWord;
 
 }
